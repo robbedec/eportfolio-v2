@@ -25,10 +25,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div>
-        <div className="wrapper">
-          <main>{children}</main>
-        </div>
+      <div className="layoutWrapper">
+          {children}
         <footer>
           © {new Date().getFullYear()}, Robbe Decorte
         </footer>
