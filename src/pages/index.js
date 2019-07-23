@@ -5,16 +5,26 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
+const linkStyle = {
+  padding: '10px',
+  display: 'flex',
+  justifyContent: 'center'
+};
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+    <h1>Hi — You look nice today.</h1>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center'
+    }}>
+      <Link style={linkStyle} to="/page-2/">about</Link>
+      <Link style={linkStyle} to="/page-2">portfolio</Link>
+      <Link style={linkStyle}to="/page-2">blog</Link>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    
   </Layout>
 )
 
