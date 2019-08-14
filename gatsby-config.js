@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: '/eportfolio-v2',
   siteMetadata: {
     title: `Interreaction`,
     author: `Robbe Decorte`,
