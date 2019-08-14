@@ -1,42 +1,65 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react';
+import { Link } from 'gatsby';
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { rhythm, scale } from '../utils/typography';
 
-import Header from "./header"
-import "./layout.css"
+import './layout.css';
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
+class Layout extends React.Component {
+  render() {
+    const { location, title, children } = this.props;
+    const rootPath = `${__PATH_PREFIX__}/blog`;
+    let header = null;
+
+    if (location.pathname === rootPath) {
+      header = (
+        <h1
+          style={{
+            ...scale(1.5),
+            marginBottom: rhythm(1.5),
+            marginTop: 0,
+          }}
+        >
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={`/blog`}
+          >
+            {title}
+          </Link>
+        </h1>
+      );
+    } else {
+      header = (
+        <h3>
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={`/blog`}
+          >
+            {title}
+          </Link>
+        </h3>
+      );
     }
-  `)
-
-  return (
-    <>
-      <div className="layoutWrapper">
-          {children}
+    return (
+      <div className="layout">
+        <header>{header}</header>
+        {children}
         <footer>
-          © {new Date().getFullYear()}, Robbe Decorte
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
-  )
+    );
+  }
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+export default Layout;

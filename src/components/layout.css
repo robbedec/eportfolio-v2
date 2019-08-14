@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "SF-pro";
-  src: url(../fonts/SF-Pro-Text-Regular.otf);
+  font-family: 'SF-pro';
+  src: url(../../content/assets/fonts/SF-Pro-Text-Regular.otf);
 }
 
 * {
@@ -8,11 +8,12 @@
   margin: 0;
   padding: 0;
   max-width: 100%;
+  font: 100% SF-pro, sans-serif;
 }
 
 body {
-  font: 100% SF-pro, sans-serif;
   background-color: black;
+  font: 100% SF-pro, sans-serif;
 }
 
 body,
@@ -20,29 +21,33 @@ a:link,
 a:visited {
   color: #fff;
   text-decoration: none;
+  box-shadow: none;
 }
 
-.wrapper {
+h1 {
+  font-family: inherit;
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  width: 42rem;
+  min-height: 100vh;
+  margin: 0 auto 0 auto;
+  flex-direction: column;
+  padding-bottom: 3vh;
+}
+
+.index {
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
-}
-
-.layoutWrapper {
-  display: flex;
-  width: 50vw;
-  min-height: 100vh;
-  margin: 0 auto 0 auto;
-  flex-direction: column;
   align-items: center;
-  padding-bottom: 3vh;
 }
 
-.about {
-  width: 100%;
-  word-wrap: break-word;
-  margin-top: 5vh;
+.link-home {
+  margin-top: 20px;
 }
 
 .about-content {
@@ -50,16 +55,6 @@ a:visited {
   margin-top: 1rem;
 }
 
-.link-home {
-  margin-top: 20px;
-}
-
-.avatar {
-  width: 40%;
-  float: left;
-  margin: 0 1.5rem 1.5rem 0;
-}
-
-.h1-wrap {
-  max-width: 100%;
+footer {
+  text-align: center;
 }
