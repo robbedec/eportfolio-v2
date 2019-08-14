@@ -56,9 +56,19 @@ h6 {
   margin-top: 20px;
 }
 
+.about {
+  margin-top: 5vh;
+}
+
 .about-content {
   text-align: justify;
   margin-top: 1rem;
+}
+
+.avatar {
+  width: 40%;
+  float: left;
+  margin: 0 1.5rem 1.5rem 0;
 }
 
 footer {
