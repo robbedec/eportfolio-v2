@@ -8,10 +8,10 @@ import './layout.css';
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/blog`;
+    const rootPath = `${__PATH_PREFIX__}/`;
     let header = null;
 
-    if (location.pathname === rootPath) {
+    if (location.pathname === rootPath + 'blog') {
       header = (
         <h1
           style={{
@@ -32,6 +32,12 @@ class Layout extends React.Component {
           </Link>
         </h1>
       );
+    } else if (
+      location.pathname === rootPath + 'about' ||
+      location.pathname === rootPath
+    ) {
+      header = null;
+      console.log('test');
     } else {
       header = (
         <h3>
@@ -50,7 +56,7 @@ class Layout extends React.Component {
     }
     return (
       <div className="layout">
-        <header>{header}</header>
+        {header ? <header>{header}</header> : null}
         {children}
         <footer>
           © {new Date().getFullYear()}, Built with

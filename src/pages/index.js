@@ -1,31 +1,31 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import "../components/layout.css"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import '../components/layout.css';
 
 const linkStyle = {
-  padding: "10px",
-}
+  padding: '10px',
+};
 
 class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    //const siteTitle = data.site.siteMetadata.title
+    const { data } = this.props;
+    const siteTitle = data.site.siteMetadata.title;
 
     return (
-      <Layout location={this.props.location} /*title={siteTitle}*/>
+      <Layout location={this.props.location} title={siteTitle}>
         <div className="index">
           <SEO title="Home" />
           <h1>Hi — You look nice today.</h1>
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
+              display: 'flex',
+              justifyContent: 'center',
             }}
           >
-            <Link style={linkStyle} to="/404/">
+            <Link style={linkStyle} to="/about">
               about
             </Link>
             <a
@@ -48,8 +48,33 @@ class IndexPage extends React.Component {
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
-export default IndexPage
+export default IndexPage;
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+          }
+        }
+      }
+    }
+  }
+`;
